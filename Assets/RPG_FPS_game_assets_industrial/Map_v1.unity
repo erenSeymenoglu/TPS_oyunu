@@ -3136,6 +3136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ZombiHP: 100
+  KovalamaMesafe: 6
 --- !u!54 &309236339
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3186,6 +3187,28 @@ CapsuleCollider:
   m_Height: 2.1287265
   m_Direction: 1
   m_Center: {x: -0.00875473, y: 1.0361509, z: -0.0034503937}
+--- !u!195 &309236342
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 309236335}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.26
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2.08
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1001 &309486614
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12743,6 +12766,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: cc5973319bf8aff4b909e9b529d9d1f9, type: 3}
       propertyPath: m_Name
       value: Ajan
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cc5973319bf8aff4b909e9b529d9d1f9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -26522,6 +26549,10 @@ PrefabInstance:
       value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: df75499b832458642ae7b5005377ee4d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: df75499b832458642ae7b5005377ee4d, type: 3}
       propertyPath: m_TagString
       value: Zombi
       objectReference: {fileID: 0}
@@ -26665,6 +26696,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: df75499b832458642ae7b5005377ee4d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 309236338}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: df75499b832458642ae7b5005377ee4d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 309236342}
   m_SourcePrefab: {fileID: 100100000, guid: df75499b832458642ae7b5005377ee4d, type: 3}
 --- !u!1001 &2061022140
 PrefabInstance:
@@ -27060,6 +27094,70 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4000013978381734, guid: fe9a19d4f0d796c40bf4fc6b69dd7b81, type: 3}
   m_PrefabInstance: {fileID: 2081746675}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2083521922
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2083521924}
+  - component: {fileID: 2083521923}
+  m_Layer: 0
+  m_Name: NavMeshSurface
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2083521923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2083521922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 23800000, guid: 702344bbc2f899647a2515ed22e02351, type: 2}
+  m_BuildHeightMesh: 0
+--- !u!4 &2083521924
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2083521922}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 14.786902, y: 1.2084, z: -14.195529}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2093864236
 GameObject:
   m_ObjectHideFlags: 0
@@ -28085,3 +28183,4 @@ SceneRoots:
   - {fileID: 2051549548}
   - {fileID: 642347233}
   - {fileID: 702255169}
+  - {fileID: 2083521924}

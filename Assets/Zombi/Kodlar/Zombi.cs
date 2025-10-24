@@ -1,16 +1,20 @@
 using System.Collections;
 using UnityEngine;
-
+using UnityEngine.AI;
 public class Zombi : MonoBehaviour
 {
     public float ZombiHP = 100;
     Animator zombiAnim;
     bool zombiOlu;
+    public float KovalamaMesafe;
+    NavMeshAgent zombiNavMash;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    GameObject hedefOyuncu;
     void Start()
     {
         zombiAnim = this.GetComponent<Animator>();
+        hedefOyuncu = GameObject.Find("Ajan");
+        zombiNavMash = this.GetComponent<NavMeshAgent>();
     }
 
     // Update is called once per frame
@@ -28,6 +32,12 @@ public class Zombi : MonoBehaviour
         else
         {
             //ileride hareket kodunu buraya yazacağız
+            float mesafe = Vector3.Distance(this.transform.position, hedefOyuncu.transform.position);
+            if (mesafe < KovalamaMesafe)
+            {
+                zombiNavMash.SetDestination(hedefOyuncu.transform.position);
+            }
+
         }
     }
 
