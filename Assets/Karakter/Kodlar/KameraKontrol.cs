@@ -12,10 +12,12 @@ public class KameraKontrol : MonoBehaviour
 
     Vector3 objRot;
     public Transform karakterVucut;
+    KarakrerKontrol karakterKontrol;
 
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        karakterKontrol = hedef.GetComponent<KarakrerKontrol>();
     }
 
     void Update()
@@ -25,6 +27,12 @@ public class KameraKontrol : MonoBehaviour
 
     void LateUpdate()
     {
+        // Karakter ölüyse kamera hareket etmesin
+        if (karakterKontrol != null && !karakterKontrol.YasiyorMu())
+        {
+            return;
+        }
+
         this.transform.position = Vector3.Lerp(this.transform.position, hedef.position + hedefMesafe, Time.deltaTime * 10);
         fareX += Input.GetAxis("Mouse X") * fareHassasiyet;
         fareY -= Input.GetAxis("Mouse Y") * fareHassasiyet;

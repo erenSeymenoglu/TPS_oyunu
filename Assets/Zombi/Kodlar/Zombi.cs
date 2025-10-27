@@ -7,6 +7,7 @@ public class Zombi : MonoBehaviour
     Animator zombiAnim;
     bool zombiOlu;
     public float KovalamaMesafe;
+    public float saldırmaMesafesi;
     NavMeshAgent zombiNavMash;
 
     GameObject hedefOyuncu;
@@ -20,6 +21,7 @@ public class Zombi : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (ZombiHP <= 0)
         {
             zombiOlu = true;
@@ -35,10 +37,33 @@ public class Zombi : MonoBehaviour
             float mesafe = Vector3.Distance(this.transform.position, hedefOyuncu.transform.position);
             if (mesafe < KovalamaMesafe)
             {
+                zombiNavMash.isStopped = false;
                 zombiNavMash.SetDestination(hedefOyuncu.transform.position);
+                zombiAnim.SetBool("yuruyor", true);
+                this.transform.LookAt(hedefOyuncu.transform.position);
+                //yürüme animasyonu
+            }
+            else
+            {
+                zombiNavMash.isStopped = true;
+                zombiAnim.SetBool("yuruyor", false);
+                zombiAnim.SetBool("saldiriyor", false);
+                //durma animasyonu
+            }
+            if (mesafe < saldırmaMesafesi)
+            {
+                this.transform.LookAt(hedefOyuncu.transform.position);
+                zombiNavMash.isStopped = true;
+                zombiAnim.SetBool("yuruyor", false);
+                zombiAnim.SetBool("saldiriyor", true);
+                //vurma animasyonu
             }
 
         }
+    }
+    public void HasarVer()
+    {
+        hedefOyuncu.GetComponent<KarakrerKontrol>().HasarAl();
     }
 
     IEnumerator YokOl()

@@ -1,23 +1,39 @@
 using UnityEngine;
 
-public class NewMonoBehaviourScript : MonoBehaviour
+public class KarakrerKontrol : MonoBehaviour
 {
     Animator anim;
 
     [SerializeField]
     private float KarakterHiz;
-
+    bool hayattaMi;
+    private float saglik = 100;
     void Start()
     {
         anim = this.GetComponent<Animator>();
-
+        hayattaMi = true;
 
     }
 
     void Update()
     {
-
-        Hareket();
+        if (saglik <= 0)
+        {
+            hayattaMi = false;
+            anim.SetBool("yasiyorMu", hayattaMi);
+        }
+        if (hayattaMi == true)
+        {
+            Hareket();
+        }
+    }
+    public bool YasiyorMu()
+    {
+        return hayattaMi;
+    }
+    public void HasarAl()
+    {
+        saglik -= Random.Range(5, 10);
     }
     void Hareket()
     {
