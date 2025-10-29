@@ -12,6 +12,10 @@ public class AtesSistemi : MonoBehaviour
     public ParticleSystem muzzleFlash;
     Animator anim;
 
+    private float sarjor = 5;
+    private float cephane = 10;
+    private float sarjorKapasitesi = 5;
+
 
     void Start()
     {
@@ -28,7 +32,19 @@ public class AtesSistemi : MonoBehaviour
 
             if (Input.GetMouseButton(0))
             {
-                anim.SetBool("atesEt", true);
+                if (sarjor > 0)
+                {
+                    anim.SetBool("atesEt", true);
+                }
+                if (sarjor < 0)
+                {
+                    anim.SetBool("atesEt", false);
+                }
+                if (sarjor <= 0 && cephane > 0)
+                {
+                    anim.SetBool("sarjorDegistirme", true);
+
+                }
             }
             else if (Input.GetMouseButtonUp(0))
             {
@@ -38,19 +54,40 @@ public class AtesSistemi : MonoBehaviour
         }
     }
 
-
+    public void SarjorDegistirme()
+    {
+        cephane -= sarjorKapasitesi - sarjor;
+        sarjor = sarjorKapasitesi;
+        anim.SetBool("sarjorDegistirme", false);
+    }
     public void AtesEtme()
     {
-
-        muzzleFlash.Play();
-
-        // Crosshair'ın yeni pozisyonuna göre ışın yolla (Y değeri 0.7f = üst kısım)
-        Ray ray = kamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity, zombiKatman))
+        if (sarjor > 0)
         {
-            hit.collider.gameObject.GetComponent<Zombi>().HasarAl();
+            sarjor--;
+            muzzleFlash.Play();
+
+            // Crosshair'ın yeni pozisyonuna göre ışın yolla (Y değeri 0.7f = üst kısım)
+            Ray ray = kamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, zombiKatman))
+            {
+                hit.collider.gameObject.GetComponent<Zombi>().HasarAl();
+            }
         }
 
+
     }
+
+    public float GetSarjor()
+    {
+        return sarjor;
+    }
+    public float GetCephane()
+    {
+        return cephane;
+    }
+
+
 }
+

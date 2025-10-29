@@ -27,6 +27,11 @@ public class KarakrerKontrol : MonoBehaviour
             Hareket();
         }
     }
+
+    public float GetSaglik()
+    {
+        return saglik;
+    }
     public bool YasiyorMu()
     {
         return hayattaMi;
@@ -45,5 +50,8 @@ public class KarakrerKontrol : MonoBehaviour
         this.gameObject.transform.Translate(yatay * KarakterHiz * Time.deltaTime, 0, dikey * KarakterHiz * Time.deltaTime);
 
     }
+
+
+
 }
 
