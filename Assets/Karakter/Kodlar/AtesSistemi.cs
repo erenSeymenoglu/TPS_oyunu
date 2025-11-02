@@ -12,9 +12,9 @@ public class AtesSistemi : MonoBehaviour
     public ParticleSystem muzzleFlash;
     Animator anim;
 
-    private float sarjor = 15;
-    private float cephane = 120;
-    private float sarjorKapasitesi = 15;
+    private float sarjor = 5;
+    private float cephane = 10;
+    private float sarjorKapasitesi = 5;
 
     AudioSource sesKaynagi;
     public AudioClip atesSes;
@@ -64,11 +64,10 @@ public class AtesSistemi : MonoBehaviour
     public void SarjorDegistirmeSes()
     {
         sesKaynagi.PlayOneShot(reloadSes);
-        sesKaynagi.volume = 0.6f;
     }
     public void SarjorDegistirme()
     {
-        sesKaynagi.volume = 1f;
+
         cephane -= sarjorKapasitesi - sarjor;
         sarjor = sarjorKapasitesi;
         anim.SetBool("sarjorDegistirme", false);
