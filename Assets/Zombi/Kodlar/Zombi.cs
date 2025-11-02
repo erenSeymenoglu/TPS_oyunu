@@ -39,32 +39,39 @@ public class Zombi : MonoBehaviour
         }
         else
         {
-            //ileride hareket kodunu buraya yazacağız
-            float mesafe = Vector3.Distance(this.transform.position, hedefOyuncu.transform.position);
-            if (mesafe < KovalamaMesafe)
+            // Null kontrolü - hedef oyuncu bulunamazsa hata vermesin
+            if (hedefOyuncu != null && zombiNavMash != null)
             {
-                zombiNavMash.isStopped = false;
-                zombiNavMash.SetDestination(hedefOyuncu.transform.position);
-                zombiAnim.SetBool("yuruyor", true);
-                this.transform.LookAt(hedefOyuncu.transform.position);
-                //yürüme animasyonu
+                float mesafe = Vector3.Distance(this.transform.position, hedefOyuncu.transform.position);
+                if (mesafe < KovalamaMesafe)
+                {
+                    zombiNavMash.isStopped = false;
+                    zombiNavMash.SetDestination(hedefOyuncu.transform.position);
+                    zombiAnim.SetBool("yuruyor", true);
+                    this.transform.LookAt(hedefOyuncu.transform.position);
+                    //yürüme animasyonu
+                }
+                else
+                {
+                    zombiNavMash.isStopped = true;
+                    zombiAnim.SetBool("yuruyor", false);
+                    zombiAnim.SetBool("saldiriyor", false);
+                    //durma animasyonu
+                }
+                if (mesafe < saldırmaMesafesi)
+                {
+                    this.transform.LookAt(hedefOyuncu.transform.position);
+                    zombiNavMash.isStopped = true;
+                    zombiAnim.SetBool("yuruyor", false);
+                    zombiAnim.SetBool("saldiriyor", true);
+                    //vurma animasyonu
+                }
             }
-            else
+            else if (hedefOyuncu == null)
             {
-                zombiNavMash.isStopped = true;
-                zombiAnim.SetBool("yuruyor", false);
-                zombiAnim.SetBool("saldiriyor", false);
-                //durma animasyonu
+                // Hedef oyuncu bulunamadıysa tekrar dene
+                hedefOyuncu = GameObject.Find("Ajan");
             }
-            if (mesafe < saldırmaMesafesi)
-            {
-                this.transform.LookAt(hedefOyuncu.transform.position);
-                zombiNavMash.isStopped = true;
-                zombiAnim.SetBool("yuruyor", false);
-                zombiAnim.SetBool("saldiriyor", true);
-                //vurma animasyonu
-            }
-
         }
     }
 
@@ -75,8 +82,14 @@ public class Zombi : MonoBehaviour
     }
     public void HasarVer()
     {
-
-        hedefOyuncu.GetComponent<KarakrerKontrol>().HasarAl();
+        if (hedefOyuncu != null)
+        {
+            KarakrerKontrol karakterKontrol = hedefOyuncu.GetComponent<KarakrerKontrol>();
+            if (karakterKontrol != null)
+            {
+                karakterKontrol.HasarAl();
+            }
+        }
     }
 
     IEnumerator YokOl()
@@ -90,4 +103,3 @@ public class Zombi : MonoBehaviour
         ZombiHP -= Random.Range(15, 25);
     }
 }
-

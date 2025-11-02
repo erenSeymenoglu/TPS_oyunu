@@ -19,9 +19,28 @@ public class ArayuzKontrol : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        mermiText.text = oyuncu.GetComponent<AtesSistemi>().GetSarjor().ToString() + "/" + oyuncu.GetComponent<AtesSistemi>().GetCephane().ToString();
+        // Null kontrolleri - oyuncu bulunamazsa veya component'ler eksikse hata vermesin
+        if (oyuncu != null)
+        {
+            AtesSistemi atesSistemi = oyuncu.GetComponent<AtesSistemi>();
+            KarakrerKontrol karakterKontrol = oyuncu.GetComponent<KarakrerKontrol>();
 
-        saglikText.text = "Hp:" + oyuncu.GetComponent<KarakrerKontrol>().GetSaglik();
+            if (mermiText != null && atesSistemi != null)
+            {
+                mermiText.text = atesSistemi.GetSarjor().ToString() + "/" + atesSistemi.GetCephane().ToString();
+            }
+
+            if (saglikText != null && karakterKontrol != null)
+            {
+                saglikText.text = "Hp:" + karakterKontrol.GetSaglik();
+            }
+        }
+        else
+        {
+            // Oyuncu bulunamadıysa tekrar dene
+            oyuncu = GameObject.Find("Ajan");
+        }
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (OyunDurdu == true)
