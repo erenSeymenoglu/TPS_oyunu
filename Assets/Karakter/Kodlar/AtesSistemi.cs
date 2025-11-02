@@ -12,9 +12,13 @@ public class AtesSistemi : MonoBehaviour
     public ParticleSystem muzzleFlash;
     Animator anim;
 
-    private float sarjor = 5;
-    private float cephane = 10;
-    private float sarjorKapasitesi = 5;
+    private float sarjor = 15;
+    private float cephane = 120;
+    private float sarjorKapasitesi = 15;
+
+    AudioSource sesKaynagi;
+    public AudioClip atesSes;
+    public AudioClip reloadSes;
 
 
     void Start()
@@ -22,6 +26,7 @@ public class AtesSistemi : MonoBehaviour
         kamera = Camera.main;
         hpKontrol = this.gameObject.GetComponent<KarakrerKontrol>();
         anim = this.gameObject.GetComponent<Animator>();
+        sesKaynagi = this.gameObject.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -42,6 +47,7 @@ public class AtesSistemi : MonoBehaviour
                 }
                 if (sarjor <= 0 && cephane > 0)
                 {
+
                     anim.SetBool("sarjorDegistirme", true);
 
                 }
@@ -54,8 +60,15 @@ public class AtesSistemi : MonoBehaviour
         }
     }
 
+
+    public void SarjorDegistirmeSes()
+    {
+        sesKaynagi.PlayOneShot(reloadSes);
+        sesKaynagi.volume = 0.6f;
+    }
     public void SarjorDegistirme()
     {
+        sesKaynagi.volume = 1f;
         cephane -= sarjorKapasitesi - sarjor;
         sarjor = sarjorKapasitesi;
         anim.SetBool("sarjorDegistirme", false);
@@ -66,6 +79,7 @@ public class AtesSistemi : MonoBehaviour
         {
             sarjor--;
             muzzleFlash.Play();
+            sesKaynagi.PlayOneShot(atesSes);
 
             // Crosshair'ın yeni pozisyonuna göre ışın yolla (Y değeri 0.7f = üst kısım)
             Ray ray = kamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));

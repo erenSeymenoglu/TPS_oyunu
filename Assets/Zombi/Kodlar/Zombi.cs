@@ -11,11 +11,17 @@ public class Zombi : MonoBehaviour
     NavMeshAgent zombiNavMash;
 
     GameObject hedefOyuncu;
+
+    AudioSource sesKaynagi;
+    public AudioClip saldirmaSesi;
+
+
     void Start()
     {
         zombiAnim = this.GetComponent<Animator>();
         hedefOyuncu = GameObject.Find("Ajan");
         zombiNavMash = this.GetComponent<NavMeshAgent>();
+        sesKaynagi = this.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -61,8 +67,15 @@ public class Zombi : MonoBehaviour
 
         }
     }
+
+
+    public void HasarVerSes()
+    {
+        sesKaynagi.PlayOneShot(saldirmaSesi);
+    }
     public void HasarVer()
     {
+
         hedefOyuncu.GetComponent<KarakrerKontrol>().HasarAl();
     }
 
