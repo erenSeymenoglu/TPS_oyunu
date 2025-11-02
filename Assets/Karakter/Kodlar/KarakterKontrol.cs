@@ -27,10 +27,13 @@ public class KarakrerKontrol : MonoBehaviour
             Hareket();
         }
     }
+<<<<<<< HEAD
     public float GetSaglik()
     {
         return saglik;
     }
+=======
+>>>>>>> parent of 22f3061 (v0.4)
     public bool YasiyorMu()
     {
         return hayattaMi;

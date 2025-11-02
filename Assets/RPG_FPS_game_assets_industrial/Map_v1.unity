@@ -5323,6 +5323,7 @@ Transform:
   m_PrefabInstance: {fileID: 369688595}
   m_PrefabAsset: {fileID: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!1001 &370043326
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6486,6 +6487,8 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 372951589}
   m_CullTransparentMesh: 1
+=======
+>>>>>>> parent of 22f3061 (v0.4)
 =======
 >>>>>>> parent of 22f3061 (v0.4)
 --- !u!1001 &373949461
@@ -28932,9 +28935,12 @@ Transform:
   m_PrefabInstance: {fileID: 1717236486}
   m_PrefabAsset: {fileID: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!1 &1719000935
 GameObject:
 =======
+=======
+>>>>>>> parent of 22f3061 (v0.4)
 --- !u!1 &1727828478 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: df75499b832458642ae7b5005377ee4d, type: 3}
@@ -28942,11 +28948,15 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
 --- !u!195 &1727828479
 NavMeshAgent:
+<<<<<<< HEAD
+>>>>>>> parent of 22f3061 (v0.4)
+=======
 >>>>>>> parent of 22f3061 (v0.4)
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
 <<<<<<< HEAD
   serializedVersion: 6
   m_Component:
@@ -28983,6 +28993,8 @@ RectTransform:
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1719000937
 =======
+=======
+>>>>>>> parent of 22f3061 (v0.4)
   m_GameObject: {fileID: 1727828478}
   m_Enabled: 1
   m_AgentTypeID: 0
@@ -29000,12 +29012,16 @@ RectTransform:
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!114 &1727828480
+<<<<<<< HEAD
+>>>>>>> parent of 22f3061 (v0.4)
+=======
 >>>>>>> parent of 22f3061 (v0.4)
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
 <<<<<<< HEAD
   m_GameObject: {fileID: 1719000935}
   m_Enabled: 0
@@ -29090,6 +29106,8 @@ MonoBehaviour:
 --- !u!222 &1719000939
 CanvasRenderer:
 =======
+=======
+>>>>>>> parent of 22f3061 (v0.4)
   m_GameObject: {fileID: 1727828478}
   m_Enabled: 1
   m_EditorHideFlags: 0

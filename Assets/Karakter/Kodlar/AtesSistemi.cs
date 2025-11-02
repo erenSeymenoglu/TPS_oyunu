@@ -12,6 +12,7 @@ public class AtesSistemi : MonoBehaviour
     public ParticleSystem muzzleFlash;
     Animator anim;
 
+<<<<<<< HEAD
     private float sarjor = 5;
     private float cephane = 10;
     private float sarjorKapasitesi = 5;
@@ -20,6 +21,8 @@ public class AtesSistemi : MonoBehaviour
     public AudioClip atesSes;
     public AudioClip reloadSes;
 
+=======
+>>>>>>> parent of 22f3061 (v0.4)
 
     void Start()
     {
@@ -37,6 +40,7 @@ public class AtesSistemi : MonoBehaviour
 
             if (Input.GetMouseButton(0))
             {
+<<<<<<< HEAD
                 if (sarjor > 0)
                 {
                     anim.SetBool("atesEt", true);
@@ -51,6 +55,9 @@ public class AtesSistemi : MonoBehaviour
                     anim.SetBool("sarjorDegistirme", true);
 
                 }
+=======
+                anim.SetBool("atesEt", true);
+>>>>>>> parent of 22f3061 (v0.4)
             }
             else if (Input.GetMouseButtonUp(0))
             {
@@ -61,6 +68,7 @@ public class AtesSistemi : MonoBehaviour
     }
 
 
+<<<<<<< HEAD
     public void SarjorDegistirmeSes()
     {
         sesKaynagi.PlayOneShot(reloadSes);
@@ -79,28 +87,20 @@ public class AtesSistemi : MonoBehaviour
             sarjor--;
             muzzleFlash.Play();
             sesKaynagi.PlayOneShot(atesSes);
+=======
+    public void AtesEtme()
+    {
+>>>>>>> parent of 22f3061 (v0.4)
 
-            // Crosshair'ın yeni pozisyonuna göre ışın yolla (Y değeri 0.7f = üst kısım)
-            Ray ray = kamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity, zombiKatman))
-            {
-                hit.collider.gameObject.GetComponent<Zombi>().HasarAl();
-            }
+        muzzleFlash.Play();
+
+        // Crosshair'ın yeni pozisyonuna göre ışın yolla (Y değeri 0.7f = üst kısım)
+        Ray ray = kamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, zombiKatman))
+        {
+            hit.collider.gameObject.GetComponent<Zombi>().HasarAl();
         }
 
-
     }
-
-    public float GetSarjor()
-    {
-        return sarjor;
-    }
-    public float GetCephane()
-    {
-        return cephane;
-    }
-
-
 }
-
